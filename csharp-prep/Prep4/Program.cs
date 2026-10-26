@@ -6,63 +6,42 @@ class Program
     static void Main(string[] args)
     {
         List<int> numbers = new List<int>();
-
-        Console.WriteLine("Enter a list of numbers, type 0 when finished.");
-
-        int number = -1;
-
-        while (number != 0)
+        
+        int userNumber = -1;
+        while (userNumber != 0)
         {
-            Console.Write("Enter number: ");
-            number = int.Parse(Console.ReadLine());
-
-            if (number != 0)
+            Console.Write("Enter a number (0 to quit): ");
+            
+            string userResponse = Console.ReadLine();
+            userNumber = int.Parse(userResponse);
+            
+            if (userNumber != 0)
             {
-                numbers.Add(number);
+                numbers.Add(userNumber);
             }
         }
 
         int sum = 0;
-
-        foreach (int num in numbers)
+        foreach (int number in numbers)
         {
-            sum += num;
+            sum += number;
         }
-
-        double average = (double)sum / numbers.Count;
-
-        int largest = numbers[0];
-
-        foreach (int num in numbers)
-        {
-            if (num > largest)
-            {
-                largest = num;
-            }
-        }
-
-        int smallestPositive = 1000000;
-
-        foreach (int num in numbers)
-        {
-            if (num > 0 && num < smallestPositive)
-            {
-                smallestPositive = num;
-            }
-        }
-
-        numbers.Sort();
 
         Console.WriteLine($"The sum is: {sum}");
+
+        float average = ((float)sum) / numbers.Count;
         Console.WriteLine($"The average is: {average}");
-        Console.WriteLine($"The largest number is: {largest}");
-        Console.WriteLine($"The smallest positive number is: {smallestPositive}");
 
-        Console.WriteLine("The sorted list is:");
+        int max = numbers[0];
 
-        foreach (int num in numbers)
+        foreach (int number in numbers)
         {
-            Console.WriteLine(num);
+            if (number > max)
+            {
+                max = number;
+            }
         }
+
+        Console.WriteLine($"The max is: {max}");
     }
 }
