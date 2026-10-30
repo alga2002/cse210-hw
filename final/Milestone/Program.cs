@@ -1,6 +1,4 @@
 // CSE 210 Final Project - Open-ended milestone
-// Investment Portfolio Tracker: sample portfolio, returns, allocation, and income.
-// The three investment types override calculations using polymorphism.
 class Program
 {
     static void Main(string[] args)
