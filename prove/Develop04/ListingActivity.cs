@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 public class ListingActivity : Activity
 {
@@ -37,15 +38,45 @@ public class ListingActivity : Activity
 
         DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
         int count = 0;
+        string response = "";
+
+        Console.Write("> ");
 
         while (DateTime.Now < endTime)
         {
-            Console.Write("> ");
-            string response = Console.ReadLine();
-
-            if (!string.IsNullOrWhiteSpace(response))
+            if (Console.KeyAvailable)
             {
-                count++;
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+
+                    if (!string.IsNullOrWhiteSpace(response))
+                    {
+                        count++;
+                    }
+
+                    response = "";
+                    Console.Write("> ");
+                }
+                else if (key.Key == ConsoleKey.Backspace)
+                {
+                    if (response.Length > 0)
+                    {
+                        response = response.Substring(0, response.Length - 1);
+                        Console.Write("\b \b");
+                    }
+                }
+                else if (!char.IsControl(key.KeyChar))
+                {
+                    response += key.KeyChar;
+                    Console.Write(key.KeyChar);
+                }
+            }
+            else
+            {
+                Thread.Sleep(50);
             }
         }
 
