@@ -4,57 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        DisplayWelcomeMessage();
+        List<Shape> shapes = new List<Shape>();
 
-        string userName = PromptUserName();
-        int userNumber = PromptUserNumber();
+        Square s1 = new Square("Red", 3);
+        shapes.Add(s1);
 
-        int squaredNumber = SquareNumber(userNumber);
+        Rectangle s2 = new Rectangle("Blue", 4, 5);
+        shapes.Add(s2);
 
-        int birthYear;
-        PromptUserBirthYear(out birthYear);
+        Circle s3 = new Circle("Green", 6);
+        shapes.Add(s3);
 
+        foreach (Shape s in shapes)
+        {
+            string color = s.GetColor();
 
-        DisplayResult(userName, squaredNumber, birthYear);
-    }
+            double area = s.GetArea();
 
-    static void DisplayWelcomeMessage()
-    {
-        Console.WriteLine("Welcome to the program!");
-    }
-
-    static string PromptUserName()
-    {
-        Console.Write("Please enter your name: ");
-        string name = Console.ReadLine();
-
-        return name;
-    }
-
-    static int PromptUserNumber()
-    {
-        Console.Write("Please enter your favorite number: ");
-        int number = int.Parse(Console.ReadLine());
-
-        return number;
-    }
-    
-    static void PromptUserBirthYear(out int birthYear)
-    {
-        Console.Write($"Please enter the year you were born: ");
-        birthYear = int.Parse(Console.ReadLine());
-
-    }
-
-    static int SquareNumber(int number)
-    {
-        int square = number * number;
-        return square;
-    }
-
-    static void DisplayResult(string name, int square, int birthYear)
-    {
-        Console.WriteLine($"{name}, the square of your number is {square}.");
-        Console.WriteLine($"{name}, you will turn {2025 - birthYear} years old this year.");
+            Console.WriteLine($"The {color} shape has an area of {area}.");
+        }
     }
 }
