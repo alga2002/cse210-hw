@@ -1,50 +1,18 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        List<int> numbers = new List<int>();
-        
-        int userNumber = -1;
-        while (userNumber != 0)
-        {
-            Console.Write("Enter a number (0 to quit): ");
-            
-            string userResponse = Console.ReadLine();
-            userNumber = int.Parse(userResponse);
-            
-            if (userNumber != 0)
-            {
-                numbers.Add(userNumber);
-            }
-        }
+        Assignment a1 = new Assignment("Samuel Bennett", "Multiplication");
+        Console.WriteLine(a1.GetSummary());
 
-        // Part 1: Compute the sum
-        int sum = 0;
-        foreach (int number in numbers)
-        {
-            sum += number;
-        }
+        MathAssignment a2 = new MathAssignment("Roberto Rodriguez", "Fractions", "7.3", "8-19");
+        Console.WriteLine(a2.GetSummary());
+        Console.WriteLine(a2.GetHomeworkList());
 
-        Console.WriteLine($"The sum is: {sum}");
-
-        // Part 2: Compute the average
-        
-        float average = ((float)sum) / numbers.Count;
-        Console.WriteLine($"The average is: {average}");
-       
-        int max = numbers[0];
-
-        foreach (int number in numbers)
-        {
-            if (number > max)
-            {
-                max = number;
-            }
-        }
-
-        Console.WriteLine($"The max is: {max}");
+        WritingAssignment a3 = new WritingAssignment("Mary Waters", "European History", "The Causes of World War II");
+        Console.WriteLine(a3.GetSummary());
+        Console.WriteLine(a3.GetWritingInformation());
     }
 }
