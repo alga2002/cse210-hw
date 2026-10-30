@@ -8,7 +8,7 @@ class Program
         // EXCEEDING REQUIREMENTS:
         // I added a leveling system that gives the user a new
         // level for every 500 points earned. The program also
-        // displays a special message when the user levels up.
+        // displays a message when the user levels up.
 
         GoalManager manager = new GoalManager();
         string choice = "";
