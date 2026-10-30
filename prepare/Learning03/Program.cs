@@ -4,29 +4,33 @@ class Program
 {
     static void Main(string[] args)
     {
-        Random randomGenerator = new Random();
-        int magicNumber = randomGenerator.Next(1, 101);
+        Fraction f1 = new Fraction();
+        Console.WriteLine(f1.GetFractionString());
+        Console.WriteLine(f1.GetDecimalValue());
 
-        int guess = -1;
+        Fraction f2 = new Fraction(5);
+        Console.WriteLine(f2.GetFractionString());
+        Console.WriteLine(f2.GetDecimalValue());
 
-        while (guess != magicNumber)
+        Fraction f3 = new Fraction(3, 4);
+        Console.WriteLine(f3.GetFractionString());
+        Console.WriteLine(f3.GetDecimalValue());
+
+        Fraction f4 = new Fraction(1, 3);
+        Console.WriteLine(f4.GetFractionString());
+        Console.WriteLine(f4.GetDecimalValue());
+
+        Random random= new Random();
+        Fraction f5 = new Fraction();
+        for (int i = 0; i < 20; i++)
         {
-            Console.Write("What is your guess? ");
-            guess = int.Parse(Console.ReadLine());
-
-            if (magicNumber > guess)
-            {
-                Console.WriteLine("Higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
-            }
-
-        }                    
+            int topValue = random.Next(1, 11);
+            int bottomValue = random.Next(1, 11);
+            f5.SetTop(topValue);
+            f5.SetBottom(bottomValue);
+            Console.Write($"Fraction {i + 1}: ");
+            Console.Write($"string: {f5.GetFractionString()}");
+            Console.WriteLine($" Number: {f5.GetDecimalValue()}");
+        }
     }
 }
